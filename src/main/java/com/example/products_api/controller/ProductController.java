@@ -11,6 +11,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.UUID;
 
 @RequestMapping("/products")
 @RestController
@@ -21,12 +22,17 @@ public class ProductController {
 
     @PostMapping
     public ResponseEntity<Product> create(@Valid @RequestBody ProductDto productDto){
-        Product newProduct = productService.createProduct(productDto);
-        return ResponseEntity.status(HttpStatus.CREATED).body(newProduct);
+        Product product = productService.createProduct(productDto);
+        return ResponseEntity.status(HttpStatus.CREATED).body(product);
     }
 
     @GetMapping
     public ResponseEntity<List<Product>> findAll(){
         return ResponseEntity.status(HttpStatus.OK).body(productService.listProducts());
+    }
+
+    @PutMapping("/{id}")
+    public ResponseEntity<Product> update(@PathVariable UUID id, @Valid @RequestBody ProductDto productDto){
+        return ResponseEntity.status(HttpStatus.OK).body(productService.updateProduct(id,productDto));
     }
 }

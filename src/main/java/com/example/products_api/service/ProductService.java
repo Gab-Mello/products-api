@@ -30,6 +30,8 @@ public class ProductService {
     }
 
     public Product updateProduct(UUID id, ProductDto productDto){
-
+        Product product = productRepository.getReferenceById(id);
+        BeanUtils.copyProperties(productDto, product);
+        return this.productRepository.save(product);
     }
 }
