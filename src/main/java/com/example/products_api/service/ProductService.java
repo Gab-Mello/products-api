@@ -1,8 +1,10 @@
 package com.example.products_api.service;
 
 import com.example.products_api.dto.ProductDto;
+import com.example.products_api.mapper.ProductMapper;
 import com.example.products_api.model.Product;
 import com.example.products_api.repository.ProductRepository;
+
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -19,9 +21,10 @@ public class ProductService {
     @Autowired
     private ProductRepository productRepository;
 
+
+
     public Product createProduct(ProductDto productDto){
-        Product product = new Product();
-        BeanUtils.copyProperties(productDto, product);
+        Product product = ProductMapper.toProduct(productDto);
         return this.productRepository.save(product);
     }
 
@@ -31,7 +34,7 @@ public class ProductService {
 
     public Product updateProduct(UUID id, ProductDto productDto){
         Product product = productRepository.getReferenceById(id);
-        BeanUtils.copyProperties(productDto, product);
+        product = ProductMapper.toProduct(productDto);
         return this.productRepository.save(product);
     }
 }
