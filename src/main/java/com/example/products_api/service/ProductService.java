@@ -32,11 +32,21 @@ public class ProductService {
         return productRepository.findAll();
     }
 
-//    public Product updateProduct(UUID id, ProductDto productDto){
-//        Product product = productRepository.getReferenceById(id);
-//        product = ProductMapper.toProduct(productDto);
-//        return this.productRepository.save(product);
-//    }
+    public Product updateProduct(String id, ProductDto productDto){
+        Optional<Product> optionalProduct = productRepository.findById(id);
+        if (optionalProduct.isPresent()){
+            Product product = optionalProduct.get();
+            product.setDescription(productDto.description());
+            product.setName(productDto.name());
+            product.setPrice(productDto.price());
+            product.setQuantity(productDto.quantity());
+            return this.productRepository.save(product);
+        }
+        else{
+            throw new EntityNotFoundException();
+        }
+
+    }
 
     public Product getProductByID(String id){
         Optional<Product> product = productRepository.findById(id);
