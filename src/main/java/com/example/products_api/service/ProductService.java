@@ -5,6 +5,7 @@ import com.example.products_api.mapper.ProductMapper;
 import com.example.products_api.model.Product;
 import com.example.products_api.repository.ProductRepository;
 
+import jakarta.persistence.EntityNotFoundException;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -22,7 +23,6 @@ public class ProductService {
     private ProductRepository productRepository;
 
 
-
     public Product createProduct(ProductDto productDto){
         Product product = ProductMapper.toProduct(productDto);
         return this.productRepository.save(product);
@@ -32,9 +32,20 @@ public class ProductService {
         return productRepository.findAll();
     }
 
-    public Product updateProduct(UUID id, ProductDto productDto){
-        Product product = productRepository.getReferenceById(id);
-        product = ProductMapper.toProduct(productDto);
-        return this.productRepository.save(product);
+//    public Product updateProduct(UUID id, ProductDto productDto){
+//        Product product = productRepository.getReferenceById(id);
+//        product = ProductMapper.toProduct(productDto);
+//        return this.productRepository.save(product);
+//    }
+
+    public Product getProductByID(String id){
+        Optional<Product> product = productRepository.findById(id);
+        if (product.isPresent()){
+            return product.get();
+        }
+        else{
+            throw new EntityNotFoundException();
+        }
+
     }
 }

@@ -31,8 +31,14 @@ public class ProductController {
         return ResponseEntity.status(HttpStatus.OK).body(productService.listProducts());
     }
 
-    @PutMapping("/{id}")
-    public ResponseEntity<Product> update(@PathVariable UUID id, @Valid @RequestBody ProductDto productDto){
-        return ResponseEntity.status(HttpStatus.OK).body(productService.updateProduct(id,productDto));
+    @GetMapping("/{id}")
+    public ResponseEntity<Product>getProductByUUID(@PathVariable String id){
+        Product product = productService.getProductByID(id);
+        return ResponseEntity.status(HttpStatus.OK).body(product);
     }
+
+//    @PutMapping("/{id}")
+//    public ResponseEntity<Product> update(@PathVariable String id, @Valid @RequestBody ProductDto productDto){
+//        return ResponseEntity.status(HttpStatus.OK).body(productService.updateProduct(id,productDto));
+//    }
 }
