@@ -56,6 +56,16 @@ public class ProductService {
         else{
             throw new EntityNotFoundException();
         }
+    }
 
+    public void delete(String id){
+        Optional<Product> optionalProduct = productRepository.findById(id);
+        if (optionalProduct.isPresent()){
+            Product product = optionalProduct.get();
+            productRepository.delete(product);
+        }
+        else{
+            throw new EntityNotFoundException();
+        }
     }
 }
