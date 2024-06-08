@@ -21,24 +21,24 @@ public class ProductController {
     ProductService productService;
 
     @PostMapping
-    public ResponseEntity<Product> create(@Valid @RequestBody ProductDto productDto){
-        Product product = productService.createProduct(productDto);
+    public ResponseEntity<ProductDto> create(@Valid @RequestBody ProductDto productDto){
+        ProductDto product = productService.createProduct(productDto);
         return ResponseEntity.status(HttpStatus.CREATED).body(product);
     }
 
     @GetMapping
-    public ResponseEntity<List<Product>> findAll(){
+    public ResponseEntity<List<ProductDto>> findAll(){
         return ResponseEntity.status(HttpStatus.OK).body(productService.listProducts());
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<Product>getProductByUUID(@PathVariable String id){
-        Product product = productService.getProductByID(id);
+    public ResponseEntity<ProductDto>getProductByUUID(@PathVariable String id){
+        ProductDto product = productService.getProductByID(id);
         return ResponseEntity.status(HttpStatus.OK).body(product);
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<Product> update(@PathVariable String id, @Valid @RequestBody ProductDto productDto){
+    public ResponseEntity<ProductDto> update(@PathVariable String id, @Valid @RequestBody ProductDto productDto){
         return ResponseEntity.status(HttpStatus.OK).body(productService.updateProduct(id,productDto));
     }
 

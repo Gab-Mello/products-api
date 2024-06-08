@@ -23,16 +23,17 @@ public class ProductService {
     private ProductRepository productRepository;
 
 
-    public Product createProduct(ProductDto productDto){
+    public ProductDto createProduct(ProductDto productDto){
         Product product = ProductMapper.toProduct(productDto);
-        return this.productRepository.save(product);
+        return ProductMapper.toProductDto(this.productRepository.save(product));
     }
 
-    public List<Product> listProducts(){
-        return productRepository.findAll();
+    public List<ProductDto> listProducts(){
+        List<ProductDto> list = ProductMapper.toProductDtoList(productRepository.findAll());
+        return list;
     }
 
-    public Product updateProduct(String id, ProductDto productDto){
+    public ProductDto updateProduct(String id, ProductDto productDto){
         Optional<Product> optionalProduct = productRepository.findById(id);
         if (optionalProduct.isPresent()){
             Product product = optionalProduct.get();
@@ -40,7 +41,8 @@ public class ProductService {
             product.setName(productDto.name());
             product.setPrice(productDto.price());
             product.setQuantity(productDto.quantity());
-            return this.productRepository.save(product);
+            this.productRepository.save(product);
+            return ProductMapper.toProductDto(product);
         }
         else{
             throw new EntityNotFoundException();
@@ -48,10 +50,10 @@ public class ProductService {
 
     }
 
-    public Product getProductByID(String id){
+    public ProductDto getProductByID(String id){
         Optional<Product> product = productRepository.findById(id);
         if (product.isPresent()){
-            return product.get();
+            return ProductMapper.toProductDto(product.get());
         }
         else{
             throw new EntityNotFoundException();
