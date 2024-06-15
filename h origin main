@@ -1,0 +1,41 @@
+[33mcommit f73792e114df1e4452b927e87246c1cce3f3c04d[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmain[m[33m)[m
+Author: Gabriel Mello <gabrielpontemello1@gmail.com>
+Date:   Fri Jun 14 10:59:26 2024 -0300
+
+    starting spring security configuration
+
+[33mcommit e6a12d2481a87e1a1946b5d301eb116c4f318e45[m[33m ([m[1;31morigin/main[m[33m)[m
+Author: Gabriel Mello <gabrielpontemello1@gmail.com>
+Date:   Fri Jun 7 00:02:36 2024 -0300
+
+    finishing updateProduct
+
+[33mcommit d87894ec47030d669005d365577a19b748887abc[m
+Author: Gabriel Mello <gabrielpontemello1@gmail.com>
+Date:   Thu Jun 6 23:40:51 2024 -0300
+
+    developing getbyid and changing UUID id to String id
+
+[33mcommit 428855bf9ab559f69b791112625bd6a0f24db3d5[m
+Author: Gabriel Mello <gabrielpontemello1@gmail.com>
+Date:   Wed Jun 5 23:47:10 2024 -0300
+
+    developing ProductMapper
+
+[33mcommit 84ffb0e4f38d03c1963fb121cb525c2c3967a663[m
+Author: Gabriel Mello <gabrielpontemello1@gmail.com>
+Date:   Mon Jun 3 21:10:11 2024 -0300
+
+    developing update
+
+[33mcommit d2427d3238c3a80995b9ed82147987dbe7882056[m
+Author: Gabriel Mello <gabrielpontemello1@gmail.com>
+Date:   Sun Jun 2 19:57:02 2024 -0300
+
+    findAll and create completed
+
+[33mcommit 3c4bc6c0a72ef61bd77825820ef9ad0350a8bde5[m
+Author: Gabriel Mello <gabrielpontemello1@gmail.com>
+Date:   Sun Jun 2 01:07:28 2024 -0300
+
+    Initial
