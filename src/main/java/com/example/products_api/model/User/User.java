@@ -19,6 +19,14 @@ public class User implements UserDetails {
     private String password;
     private UserRole role;
 
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
     public User(String username, String password, UserRole role){
         this.username = username;
         this.password = password;

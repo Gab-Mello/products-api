@@ -20,7 +20,7 @@ import java.util.UUID;
 public class ProductService {
 
     @Autowired
-    private ProductRepository productRepository;
+    ProductRepository productRepository;
 
 
     public ProductDto createProduct(ProductDto productDto){
